@@ -1,11 +1,11 @@
 from importlib.resources import path
 from logging import root
 from tkinter import *
-from turtle import bgcolor, down
 from datos_datos import *
 from tkinter import ttk
 from tkinter import messagebox
 from PIL import ImageTk, Image
+from capturaimg import *
 
 """Creación de Ventana de Ingreso"""
 
@@ -103,7 +103,7 @@ class Ventana(Frame):
         selected = self.grid.focus()                               
         clave = self.grid.item(selected,'text')        
         if clave == '':
-            messagebox.showwarning("Modificar", 'Debes Seleccionar Un Elemento.')            
+            messagebox.showwarning("Modificar", 'Debes seleccionar un elemento.')            
         else:            
             self.id= clave  
             self.habilitarCajas("normal")                         
@@ -126,22 +126,22 @@ class Ventana(Frame):
         selected = self.grid.focus()                               
         clave = self.grid.item(selected,'text')        
         if clave == '':
-            messagebox.showwarning("Eliminar", 'Debes Seleccionar Un Elemento.')            
+            messagebox.showwarning("Eliminar", 'Debes seleccionar un elemento.')            
         else:                           
             valores = self.grid.item(selected,'values')
             data = str(clave) + ", " + valores[0] + ", " + valores[1]
-            r = messagebox.askquestion("Eliminar", "Deseas Eliminar El Registro Seleccionado?\n" + data)            
+            r = messagebox.askquestion("Eliminar", "Deseas eliminar el registro seleccionado?\n" + data)            
             if r == messagebox.YES:
                 n = self.datos_in.elimina_datos(clave)
                 if n == 1:
-                    messagebox.showinfo("Eliminar", 'Elemento Eliminado Correctamente.')
+                    messagebox.showinfo("Eliminar", 'Elemento eliminado correctamente.')
                     self.limpiaGrid()
                     self.llenaDatos()
                 else:
-                    messagebox.showwarning("Eliminar", 'No Fue Posible Eliminar El Elemento.')
+                    messagebox.showwarning("Eliminar", 'No fue posible eliminar el elemento.')
                             
     def fCancelar(self):
-        r = messagebox.askquestion("Calcelar", "Esta Seguro Que Desea Cancelar La Operación Actual")
+        r = messagebox.askquestion("Calcelar", "Esta seguro que desea cancelar la operación actual")
         if r == messagebox.YES:
             self.limpiarCajas() 
             self.habilitarBtnGuardar("disabled")      
@@ -263,15 +263,15 @@ class Ventana(Frame):
         sb.config(command=self.grid.yview)
         self.grid['selectmode']='browse'   
 
-        #Frame para Fotografía
-        frame5 = Frame(self,bg="red")
-        frame5.place(x=1045,y=0,height=255, width=220)  
-        lbl1 = Label(frame5)
-        lbl1.configure(bg="green")
-        lbl1.place(x=20,y=20, height=180, width=180)
+        # #Frame para Fotografía
+        # frame5 = Frame(self,bg="red")
+        # frame5.place(x=1045,y=0,height=255, width=220)  
+        # lbl1 = Label(frame5)
+        # lbl1.configure(bg="green")
+        # lbl1.place(x=20,y=20, height=180, width=180)
 
-        #Botones de Cámara
-        self.btnGuardar=Button(frame5,text="Activar Cámara", command=self.fActivarCam, bg="Silver", fg="Black")
-        self.btnGuardar.place(x=35,y=210,width=90, height=30)
-        self.btnCancelar=Button(frame5,text="Capturar", command=self.fCapturar, bg="Silver", fg="Black")
-        self.btnCancelar.place(x=130,y=210,width=60, height=30) 
+        # #Botones de Cámara
+        # self.btnGuardar=Button(frame5,text="Activar Cámara", command=self.fActivarCam, bg="Silver", fg="Black")
+        # self.btnGuardar.place(x=35,y=210,width=90, height=30)
+        # self.btnCancelar=Button(frame5,text="Capturar", command=self.fCapturar, bg="Silver", fg="Black")
+        # self.btnCancelar.place(x=130,y=210,width=60, height=30) 
