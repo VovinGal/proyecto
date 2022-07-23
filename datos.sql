@@ -1,0 +1,8 @@
+DELIMITER //
+CREATE TRIGGER actualiza AFTER UPDATE ON visitantes
+FOR EACH ROW
+BEGIN
+    UPDATE visitantes SET old.Ingreso = NOW();
+END;
+END //
+DELIMITER ;
