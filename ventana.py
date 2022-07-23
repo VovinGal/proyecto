@@ -5,7 +5,7 @@ from datos_datos import *
 from tkinter import ttk
 from tkinter import messagebox
 from PIL import ImageTk, Image
-from capturaimg import *
+from capturaImg import *
 
 """Creación de Ventana de Ingreso"""
 
